@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+   
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <title>React App</title>
+  </head>
+  <style>
+    body {
+        transition: background-color 0.5s;
+    }
+    .day {
+        background-color: #fef2f2; /* Light color scheme for daytime */
+        color: #333;
+    }
+    .night {
+        background-color: #a5a5a5; /* Dark color scheme for nighttime */
+        /* color: #fff; */
+    }
+</style>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+  </body>
+  <script>
+    // Function to check if it's daytime or nighttime
+    function isDaytime() {
+        const now = new Date();
+        const hours = now.getHours();
+        return hours >= 6 && hours < 18; // Assuming daytime is from 6:00 AM to 6:00 PM
+    }
+
+    // Function to set the appropriate class on the body based on the time of day
+    function setDayNightClass() {
+        const body = document.body;
+        if (isDaytime()) {
+            body.classList.remove('night');
+            body.classList.add('day');
+        } else {
+            body.classList.remove('day');
+            body.classList.add('night');
+        }
+    }
+
+    // Initial call to set the class based on the current time
+    setDayNightClass();
+
+    // Check and update the class every minute
+    setInterval(setDayNightClass, 60000);
+
+
+</script>
+</html>
